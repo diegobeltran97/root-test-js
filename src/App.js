@@ -1,6 +1,10 @@
 import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import Login from './Pages/Login';
+import Home from './Pages/Home'
+import Header from './Components/Header';
+import Jobs from './Pages/Jobs';
+import {  BrowserRouter as Router , Route , Switch} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class LambdaDemo extends Component {
   constructor(props) {
@@ -22,10 +26,7 @@ class LambdaDemo extends Component {
 
     return (
       <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
+       
       </p>
     )
   }
@@ -34,15 +35,18 @@ class LambdaDemo extends Component {
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
+       <Header branding="Test js"/>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
+          <Route  exact path="/jobs" component={Jobs} />
+         
+        </Switch>
+       
       </div>
+      </Router>
     )
   }
 }
