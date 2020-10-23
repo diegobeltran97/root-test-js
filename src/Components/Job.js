@@ -6,7 +6,7 @@ export default class Job extends Component {
 
 
     render() {
-        const { title, description ,image, date, status } = this.props
+        const { title, description , date, status } = this.props
         return (
             <div className="col-12">
                 
